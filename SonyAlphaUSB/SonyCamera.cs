@@ -40,7 +40,7 @@ namespace SonyAlphaUSB
             }
         }
 
-        public int FNumber
+        public double FNumber
         {
             get { return GetFNumber(); }
         }
@@ -834,10 +834,10 @@ namespace SonyAlphaUSB
             DoMainSettingI16(SettingIds.RecordVideo, 1);
         }
 
-        public int GetFNumber()
+        public double GetFNumber()
         {
-            CameraSetting setting = GetSetting(SettingIds.LiveViewState);
-            return setting != null ? setting.Value : 0;
+            CameraSetting setting = GetSetting(SettingIds.FNumber);
+            return setting != null ? (double)setting.Value/100 : 0;
         }
 
         public void ModifyFNumber(short steps)
